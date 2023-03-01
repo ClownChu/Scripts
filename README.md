@@ -41,9 +41,11 @@
     <thead>
         <tr>
             <th colspan="2">
-                <div align="center" style="font-size: 40px;">
-                    <img src="https://th.bing.com/th/id/OIP.9hBO-8N0zl7ijPab6dhjxQHaHY?pid=ImgDet&rs=1" alt="Bash" width="35px" height="35px" />
-                    Bash
+                <div align="center">
+                    <a href="/bash" style="font-size: 40px;">
+                        <img src="https://th.bing.com/th/id/OIP.9hBO-8N0zl7ijPab6dhjxQHaHY?pid=ImgDet&rs=1" alt="Bash" width="35px" height="35px" />
+                        Bash
+                    </a>
                 </div>
             </th>
         </tr>
