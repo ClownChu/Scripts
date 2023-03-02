@@ -1,14 +1,3 @@
-<h1 align="center">ClownChu Scripts</h1>
-<h3 align="center">Collection of *<b><i><small>maybe</small></i></b>* helpful scripts</h3>
-
-<small>
-    <a href="https://github.com/ClownChu/Scripts">ClownChu/Scripts</a> > 
-    <a href="/bash">bash</a> >
-    <a href="/bash/linux_backup">linux_backup</a>
-</small>
-
-<br />
-
 <h1 align="center" id="linux_backup_sh">
     linux_backup.sh
 </h1>
