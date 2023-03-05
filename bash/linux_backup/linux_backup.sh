@@ -47,7 +47,7 @@ WEEK_DAY=`date +%u`
 declare -a PATHS_TO_BACKUP
 PATHS_TO_BACKUP[0]="/usr;usr;lite;src,share,X11R6,lost+found,tmp,x86_64-suse-linux"
 PATHS_TO_BACKUP[1]="/var;var;lite;adm/autoinstall/cache,adm/backup,adm/mount,adm/YaST/InstSrcManager,cache,games,X11R6,lost+found,lib/clamav,lib/named/proc,lib/ntp/drift,lib/ntp/proc,lib/ntp/var,lib/zypp,lock,backup/system,log,run,spool/amavis/tmp,tmp"
-PATHS_TO_BACKUP[2]="/;system;full;vz,backups,dev,media,data,mnt,proc,sys,srv,tmp,usr,var,root/.cpan,root/backup,home"
+PATHS_TO_BACKUP[2]="/;system;lite;vz,backups,dev,media,data,mnt,proc,sys,srv,tmp,usr,var,root/.cpan,root/backup,home"
 
 # ({database};{output};{full|lite})
 declare -a DBS_TO_BACKUP
@@ -66,7 +66,8 @@ get_excludes_out() {
 
     eval "$3=''"
     for i in "${exclude_arr[@]}"; do
-        eval "$3+=' --exclude=${1}/${i}'"
+        path="${1}/"
+        eval "$3+=' --exclude=${path/\/\//\/}${i}'"
     done
 }
 
@@ -124,10 +125,10 @@ db_backup() {
         start_date=`date +%s`
 
         if ([ "$VERBOSE" == "true" ]) then
-          echo "mysqldump ${info[0]} --add-drop-table -p******* | gzip > ${output_path}"
+          echo "mysqldump ${info[0]} --add-drop-table -p******* 2>&1 1>&0 | gzip > ${output_path}"
         fi
 
-        `mysqldump ${info[0]} --add-drop-table -p${DB_PASSWORD} 2>&1 1>&0 | gzip > ${output_path}`
+        `mysqldump ${info[0]} --add-drop-table -p"${DB_PASSWORD}" 2>&1 1>&0 | gzip > ${output_path}`
         get_execution_stats $start_date $output_path
     done
 }
